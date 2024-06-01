@@ -384,6 +384,7 @@ end
 endmodule 
 
 13.  padd.v: 
+
 module padd (a,b,cin,s,cout); 
 input [3:0]a,b; 
 input cin; 
@@ -403,24 +404,23 @@ assign vdd = 1'b1;
 assign gnd = 1'b0; 
 assign s = a^b^ci; 
 assign co = (a&b)|(b&ci)|(ci&a); 
-endmodule 
+endmodule
 
-padd_tb.v: 
+padd_tb.v:
 module padd_tb;
-reg [3:0]A,B; 
-reg Cin; 
-wire [3:0]S; 
-wire Cout; 
-padd PA1 (A,B,Cin,S,Cout); 
+reg [3:0]a1,b1; 
+reg cin1; 
+wire [3:0]s1; 
+wire cout1; 
+padd PA1 (a1,b1,cin1,s1,cout1); 
 initial begin 
-A=4'b0001; B=4'b0010; Cin=1'b1; #2 
-A=4'b1111; B=4'b1111; Cin=1'b1; #2 
-A=4'b1001; B=4'b1010; Cin=1'b1; #2 
-A=4'b0001; B=4'b0010; Cin=1'b0; #2 
+a1=4'b0001; b1=4'b0010; cin1=1'b1; #2 
+a1=4'b1111; b1=4'b1111; cin1=1'b1; #2 
+a1=4'b1001; b1=4'b1010; cin1=1'b1; #2 
+a1=4'b0001; b1=4'b0010; cin1=1'b0; #2 
 $finish; 
 end 
 endmodule 
-
 
 14. sync_cntr.v: 
 module syn_cntr (clk, rst, count); 
